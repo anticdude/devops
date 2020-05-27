@@ -1,0 +1,10 @@
+- 
+  name: "Test Cloud Files Objects"
+  hosts: vm2
+  gather_facts: False
+  tasks:
+    - name: "Upload one file to test container"
+      rax_files_objects:
+        container: testcont
+        src: ~/home/ankitpatel/test/a.txt
+        dest: ~/home/ankitpatel/

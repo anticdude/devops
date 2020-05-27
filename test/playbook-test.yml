@@ -1,0 +1,28 @@
+-
+  name : test onnectivity
+  become: yes
+  remote_user: ankitpatel
+  hosts : vm2
+  tasks:
+#    - name: ping test
+#      ping:
+#    - name: copy file
+#      copy:
+#        src: /home/ankitpatel/file1/a.txt
+#        dest: /home/ankitpatel/copyhere
+#        remote_src: yes
+#     - name: install httpd*
+#       yum: name=httpd state=latest
+     - name: ensure httpd is running
+       service:
+             name: httpd 
+             state: started
+     - name: Open port 80 for http access
+       firewalld:
+             service: http
+             permanent: true
+             state: enabled
+     - name: Restart the firewalld service to load in the firewall changes
+       service: 
+             name: firewalld 
+             state: restarted
